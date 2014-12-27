@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <title>{% block title %}{% endblock %} - FlaskApp</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+    {% endblock %}
+</head>
+<body>
+
+    {% set active_page = active_page|default('index') -%}
+    {% set navigation_bar = [
+        ('/', 'index', 'Index'),
+        ('/hello/', 'hello', 'Hello')
+    ] -%}
+    {% include 'nav.html' %}
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block footer %}
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+</body>
+</html>
